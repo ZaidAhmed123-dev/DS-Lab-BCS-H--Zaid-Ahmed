@@ -2,48 +2,30 @@
 using namespace std;
 
 int main() {
-    int cat;
-    cout << "categories: ";
-    cin >> cat;
+    int n;
+    cout << "students: "; cin >> n;
 
-    int* cnt = new int[cat];
-    int** books = new int*[cat];
+    int** marks = new int*[n];
+    int* cnt = new int[n];
 
-    for (int i = 0; i < cat; i++) {
-        cout << "books in category " << i + 1 << ": ";
+    for(int i=0;i<n;i++){
+        cout << "courses of student " << i+1 << ": ";
         cin >> cnt[i];
-        books[i] = new int[cnt[i]];
-        for (int j = 0; j < cnt[i]; j++) {
-            cout << "book id " << j + 1 << ": ";
-            cin >> books[i][j];
+        marks[i] = new int[cnt[i]];
+        for(int j=0;j<cnt[i];j++){
+            cout << "mark " << j+1 << ": ";
+            cin >> marks[i][j];
         }
     }
 
-    int id;
-    cout << "search book id: ";
-    cin >> id;
-
-    bool found = false;
-    int foundCat = -1;
-    for (int i = 0; i < cat && !found; i++) {
-        for (int j = 0; j < cnt[i]; j++) {
-            if (books[i][j] == id) {
-                found = true;
-                foundCat = i;
-                break;
-            }
-        }
+    for(int i=0;i<n;i++){
+        int sum=0;
+        for(int j=0;j<cnt[i];j++) sum+=marks[i][j];
+        double avg = (cnt[i]>0)? (double)sum/cnt[i] : 0;
+        cout << "avg of student " << i+1 << ": " << avg << endl;
     }
 
-    if (found) {
-        cout << "book " << id << " found in category " << foundCat + 1 << endl;
-    } else {
-        cout << "book " << id << " not available" << endl;
-    }
-
-    for (int i = 0; i < cat; i++) {
-        delete[] books[i];
-    }
-    delete[] books;
+    for(int i=0;i<n;i++) delete[] marks[i];
+    delete[] marks;
     delete[] cnt;
 }
