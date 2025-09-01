@@ -2,48 +2,43 @@
 using namespace std;
 
 int main() {
-    int cat;
-    cout << "categories: ";
-    cin >> cat;
+    int n;
+    cout << "months: "; 
+	cin >> n;
 
-    int* cnt = new int[cat];
-    int** books = new int*[cat];
+    double* exp = new double[n];
+    for(int i=0;i<n;i++){
+        cout << "expense month " << i+1 << ": ";
+        cin >> exp[i];
+    }
 
-    for (int i = 0; i < cat; i++) {
-        cout << "books in category " << i + 1 << ": ";
-        cin >> cnt[i];
-        books[i] = new int[cnt[i]];
-        for (int j = 0; j < cnt[i]; j++) {
-            cout << "book id " << j + 1 << ": ";
-            cin >> books[i][j];
+    char more;
+    cout << "add more months? (y/n): "; 
+	cin >> more;
+    if(more=='y'||more=='Y'){
+        int extra;
+        cout << "extra months: "; 
+		cin >> extra;
+        double* temp = new double[n+extra];
+        
+        for(int i=0;i<n;i++) 
+		temp[i]=exp[i];
+		
+        for(int i=0;i<extra;i++){
+            cout << "expense month " << n+i+1 << ": ";
+            cin >> temp[n+i];
         }
+        
+        delete[] exp;
+        exp=temp;
+        n+=extra;
     }
 
-    int id;
-    cout << "search book id: ";
-    cin >> id;
+    double sum=0;
+    for(int i=0;i<n;i++) 
+	sum+=exp[i];
+    cout << "total: " << sum << endl;
+    cout << "avg: " << sum/n << endl;
 
-    bool found = false;
-    int foundCat = -1;
-    for (int i = 0; i < cat && !found; i++) {
-        for (int j = 0; j < cnt[i]; j++) {
-            if (books[i][j] == id) {
-                found = true;
-                foundCat = i;
-                break;
-            }
-        }
-    }
-
-    if (found) {
-        cout << "book " << id << " found in category " << foundCat + 1 << endl;
-    } else {
-        cout << "book " << id << " not available" << endl;
-    }
-
-    for (int i = 0; i < cat; i++) {
-        delete[] books[i];
-    }
-    delete[] books;
-    delete[] cnt;
+    delete[] exp;
 }
