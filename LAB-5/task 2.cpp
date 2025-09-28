@@ -2,7 +2,8 @@
 using namespace std;
 
 void printNumbers(int n) {
-    if(n==0) return;
+    if(n==0)
+        return;
     cout << n << " ";
     printNumbers(n-1);
 }
@@ -11,13 +12,15 @@ void functionA(int n);
 void functionB(int n);
 
 void functionA(int n) {
-    if(n==0) return;
+    if(n==0) 
+        return;
     cout << "A:" << n << " ";
     functionB(n-1);
 }
 
 void functionB(int n) {
-    if(n==0) return;
+    if(n==0) 
+        return;
     cout << "B:" << n << " ";
     functionA(n-1);
 }
