@@ -78,7 +78,7 @@ string infixToPostfix(string infix){
 			while(!st.isEmpty() && st.peek()!='('){
 				postfix+=st.pop();
 			}
-			st.pop(); // remove '('
+			st.pop(); 
 		}
 		
 		else if(isOperator(ch)){
@@ -96,7 +96,6 @@ string infixToPostfix(string infix){
 	return postfix;
 }
 
-// separate integer stack for evaluation
 class IntStack{
 	public:
 		int top;
