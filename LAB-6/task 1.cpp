@@ -8,7 +8,7 @@ class Stack{
 		int *arr;
 		int max;
 		Stack(int m):max(m){
-			arr=new int(max);
+			arr=new int[max];
 			top=-1;
 		}	
 		
