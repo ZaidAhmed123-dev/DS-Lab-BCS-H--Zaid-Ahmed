@@ -90,7 +90,7 @@ int main(){
 	string page;
 	
 	do{
-		cout<<"\n--- Browser History Menu ---"<<endl;
+		cout<<"\nBrowser History Menu\n"<<endl;
 		cout<<"1. Visit new page"<<endl;
 		cout<<"2. Go back"<<endl;
 		cout<<"3. Show current page"<<endl;
@@ -120,7 +120,7 @@ int main(){
 				break;
 				
 			case 5:
-				cout<<"Exiting browser simulation..."<<endl;
+				cout<<"Exiting"<<endl;
 				break;
 				
 			default:
