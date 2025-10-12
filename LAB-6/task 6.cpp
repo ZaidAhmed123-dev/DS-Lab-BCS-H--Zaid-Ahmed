@@ -69,11 +69,9 @@ string reverseStr(string s){
 	return rev;
 }
 
-// Infix to Prefix Conversion
 string infixToPrefix(string infix){
 	infix=reverseStr(infix);
 	
-	// swap '(' with ')' in the reversed string
 	for(int i=0;i<infix.length();i++){
 		if(infix[i]=='(') infix[i]=')';
 		else if(infix[i]==')') infix[i]='(';
@@ -94,7 +92,7 @@ string infixToPrefix(string infix){
 		else if(ch==')'){
 			while(!st.isEmpty() && st.peek()!='(')
 				prefix+=st.pop();
-			st.pop(); // remove '('
+			st.pop();
 		}
 		
 		else if(isOperator(ch)){
@@ -111,7 +109,6 @@ string infixToPrefix(string infix){
 	return prefix;
 }
 
-// Integer stack for evaluation
 class IntStack{
 	public:
 		int top;
